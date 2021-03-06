@@ -3,34 +3,36 @@ class BlocksController < ApplicationController
 
         def index
             blocks = Block.all
-            render json: blocks, except: [:created_at, :updated_at]
+            render json: blocks
         end
 
         def show
             block = Block.find(params[:id])
             render json: block
-        else
-            render json: {message: 'Block not found'}
-        end
     end
 
-        # def new
-        #     @block = Block.new
-        # end
+        def new
+            block = Block.new
+            render json: block
+        end
 
-        # def create 
-        #     @block = Block.new(block_params)
-        #     render json:
-        # end
+        def create 
+            block = Block.new(block_params)
+            render json: block
+        end
 
-        # def edit
-        #     @block = Block.find(params[:id])
-        #     render json:
-        # end
+        def edit
+            block = Block.find(params[:id])
+            render json: block
+        end
 
-        # def updated
-        #     @block.update(block_params)
-        # end
+        def updated
+            block.update(block_params)
+        end
+
+        def destroy 
+            block.destroy
+        end
 
         private
         def block_params
