@@ -7,17 +7,12 @@ class BlocksController < ApplicationController
         end
 
         def show
-            block = Block.find(params[:id])
+            block = Block.find(id: params[:id])
             render json: block
     end
 
-        def new
-            block = Block.new
-            render json: block
-        end
-
         def create 
-            block = Block.new(block_params)
+            block = Block.create()
             render json: block
         end
 
@@ -34,10 +29,10 @@ class BlocksController < ApplicationController
             block.destroy
         end
 
-        private
-        def block_params
-            params.require(:block).permit(:title, :description, :user_id, :channel_id)
-        end
+        # private
+        # def block_params
+        #     params.require(:block).permit(:title, :description, :user_id, :channel_id)
+        # end
 end
 
 

@@ -1,5 +1,5 @@
 class ChannelSerializer < ActiveModel::Serializer
-attributes :title
+attributes :id, :title
 has_many :blocks
 has_many :users, through: :blocks
 

@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2021_03_05_234032) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
+3
   add_foreign_key "blocks", "channels"
   add_foreign_key "blocks", "users"
 end

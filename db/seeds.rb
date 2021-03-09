@@ -6,7 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
+Block.destroy_all
+Channel.destroy_all
+User.destroy_all
 
 user01 = User.create(name: "I sold my soul")
 user02 = User.create(name: "Tania Tanme")
