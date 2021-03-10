@@ -12,29 +12,29 @@ class BlocksController < ApplicationController
     end
 
         def create 
-            block = Block.create()
+            block = Block.create(block_params)
             render json: block
         end
 
-        def edit
-            block = Block.find(params[:id])
-            render json: block
-        end
-
-        def updated
+        def update
+            block = block.find(params[:id])
             block.update(block_params)
+            render json: block
         end
 
         def destroy 
+            block = block.find_by(params[:id])
             block.destroy
+            render json: {"Message": "block was destroyed"}
         end
 
-        # private
-        # def block_params
-        #     params.require(:block).permit(:title, :description, :user_id, :channel_id)
-        # end
+        private
+        def block_params
+            params.require(:block).permit(:title, :description, :user_id, :channel_id)
+        end
 end
 
+# block = Block.create(id: params[:id], title: params[:title], description: params[:description], channel_id: params[:channel_id], user_id: params[:user_id])
 
 # def show
 #     sighting = Sighting.find_by(id: params[:id])
