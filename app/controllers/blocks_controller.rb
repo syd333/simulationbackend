@@ -7,7 +7,7 @@ class BlocksController < ApplicationController
         end
 
         def show
-            block = Block.find(id: params[:id])
+            block = Block.find_by(id: params[:id])
             render json: block
     end
 
@@ -17,20 +17,20 @@ class BlocksController < ApplicationController
         end
 
         def update
-            block = block.find(params[:id])
+            block = Block.find_by(id: params[:id])
             block.update(block_params)
             render json: block
         end
 
         def destroy 
-            block = block.find_by(params[:id])
+            block = Block.find_by(id: params[:id])
             block.destroy
             render json: {"Message": "block was destroyed"}
         end
 
         private
         def block_params
-            params.require(:block).permit(:title, :description, :user_id, :channel_id)
+            params.require(:block).permit(:id, :title, :description, :user_id, :channel_id)
         end
 end
 
