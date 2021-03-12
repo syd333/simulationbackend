@@ -16,7 +16,7 @@ class ChannelsController < ApplicationController
     end
 
     def destroy 
-        channel = Channel.find_by(params[:id])
+        channel = Channel.find_by(id: params[:id])
         channel.destroy
         render json: {"Message": "channel was destroyed"}
     end
